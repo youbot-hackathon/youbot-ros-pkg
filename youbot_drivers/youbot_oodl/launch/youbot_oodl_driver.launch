@@ -15,7 +15,8 @@ or enable the USE_SETCAP flag in the cmake file and recompile again.
 	<param name="youBotHasArm" type="bool" value="true"/> 
 
 	<node name="youbot_oodl_driver" pkg="youbot_oodl" type="youbot_oodl" output="screen">
-		
+		<remap from="base/joint_states" to="/joint_states"/>
+		<remap from="arm_1/joint_states" to="/joint_states"/>
 	</node>
 
 	
