@@ -18,6 +18,12 @@
   <!-- youbot arm -->
   <include filename="$(find youbot_description)/urdf/youbot_arm/arm.urdf.xacro"/>
 
+  <!-- camera -->
+  <include filename="$(find youbot_description)/urdf/sensors/camera.urdf.xacro"/>
+
+  <!-- kinect -->
+  <include filename="$(find youbot_description)/urdf/sensors/kinect.urdf.xacro"/>
+
   <!-- youbot gripper -->
   <include filename="$(find youbot_description)/urdf/youbot_gripper/gripper.urdf.xacro" />
  
@@ -49,6 +55,15 @@
   <xacro:youbot_gripper name="gripper" parent="arm_link_5">
     <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:youbot_gripper>
-
+  
+  <!-- camera mounted on arm -->
+  <xacro:youbot_camera name="camera" parent="arm_link_5" ros_topic="camera">
+    <origin xyz="0.075 0 0" rpy="0 -0.65 0" />
+  </xacro:youbot_camera>
+  
+  <!-- kinect mounted on plate -->
+  <xacro:youbot_kinect name="openni" parent="plate_link" ros_topic="kinect">
+    <origin xyz="0 0 0.52" rpy="0 0 0" />
+  </xacro:youbot_kinect>
   
 </robot>
