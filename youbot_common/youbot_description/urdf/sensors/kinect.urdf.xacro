@@ -9,10 +9,14 @@
 
   <xacro:macro name="youbot_kinect" params="name parent *origin ros_topic">
 
-    <joint name="${name}_joint" type="fixed">
+    <joint name="${name}_joint" type="revolute">
       <insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${name}_link"/>
+      <axis xyz="0 -1 0"/>
+      <calibration rising="0"/>
+      <dynamics damping="25.0" friction="10.0"/>
+      <limit effort="100" lower="-0.54" upper="0.54" velocity="1.0"/>
     </joint>
 
     <link name="${name}_link">
@@ -23,7 +27,7 @@
       </inertial>
 
       <visual>
-        <origin xyz="0 0 0.015" rpy="0 0 0" />
+        <origin xyz="0 0 0.015" rpy="0 1.5708 0" />
         <geometry>
           <box size="0.02 0.02 0.075"/>
         </geometry>
@@ -31,7 +35,7 @@
       </visual>
 
       <collision>
-        <origin xyz="0 0 0.015" rpy="0 0 0" />
+        <origin xyz="0 0 0.015" rpy="0 1.5708 0" />
         <geometry>
            <box size="0.02 0.02 0.075"/>
         </geometry>
@@ -39,7 +43,7 @@
     </link>
     
     <joint name="${name}_camera_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="1.5708 -1.5708 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <parent link="${name}_link"/>
       <child link="${name}_camera"/>
     </joint>
