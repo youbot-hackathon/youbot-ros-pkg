@@ -63,7 +63,7 @@
   
   <!-- kinect mounted on plate -->
   <xacro:youbot_kinect name="openni" parent="plate_link" ros_topic="kinect">
-    <origin xyz="0 0 0.52" rpy="0 0 0" />
+    <origin xyz="-0.06 0 0.52" rpy="0 1.57 0" />
   </xacro:youbot_kinect>
   
 </robot>
