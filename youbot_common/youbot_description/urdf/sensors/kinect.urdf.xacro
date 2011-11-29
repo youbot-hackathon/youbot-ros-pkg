@@ -9,14 +9,10 @@
 
   <xacro:macro name="youbot_kinect" params="name parent *origin ros_topic">
 
-    <joint name="${name}_joint" type="revolute">
+    <joint name="${name}_joint" type="fixed">
       <insert_block name="origin" />
       <parent link="${parent}"/>
       <child link="${name}_link"/>
-      <axis xyz="0 -1 0"/>
-      <calibration rising="0"/>
-      <dynamics damping="25.0" friction="10.0"/>
-      <limit effort="100" lower="-0.54" upper="0.54" velocity="1.0"/>
     </joint>
 
     <link name="${name}_link">

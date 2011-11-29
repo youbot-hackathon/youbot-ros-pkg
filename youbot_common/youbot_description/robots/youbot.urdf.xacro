@@ -62,8 +62,8 @@
   </xacro:youbot_camera>
   
   <!-- kinect mounted on plate -->
-  <xacro:youbot_kinect name="openni" parent="plate_link" ros_topic="kinect">
-    <origin xyz="-0.06 0 0.52" rpy="0 0 0" />
+  <xacro:youbot_kinect name="openni" parent="plate_link" ros_topic="/camera/depth/points1">
+    <origin xyz="-0.06 0 0.6" rpy="0 0.45 0" />
   </xacro:youbot_kinect>
   
 </robot>
