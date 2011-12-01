@@ -468,6 +468,22 @@ void YouBotOODLWrapper::computeOODLSensorReadings() {
 		odometryMessage.twist.twist.linear.y = vy;
 		odometryMessage.twist.twist.angular.z = vtheta;
 
+		for (int i = 0; i < 36; i++) odometryMessage.pose.covariance[i] = 0.0;
+		odometryMessage.pose.covariance[0] = 1e-3;
+		odometryMessage.pose.covariance[7] = 1e-3;
+		odometryMessage.pose.covariance[14] = 1e6;
+		odometryMessage.pose.covariance[21] = 1e6;
+		odometryMessage.pose.covariance[28] = 1e6;
+		odometryMessage.pose.covariance[35] = 1e3;
+
+		for (int i = 0; i < 36; i++) odometryMessage.twist.covariance[i] = 0.0;
+		odometryMessage.twist.covariance[0] = 1e-3;
+		odometryMessage.twist.covariance[7] = 1e-3;
+		odometryMessage.twist.covariance[14] = 1e6;
+		odometryMessage.twist.covariance[21] = 1e6;
+		odometryMessage.twist.covariance[28] = 1e6;
+		odometryMessage.twist.covariance[35] = 1e3;
+
 		/* Set up joint state message for the wheels */
 		baseJointStateMessage.header.stamp = currentTime;
 		baseJointStateMessage.name.resize(youBotNumberOfWheels * 2); // *2 because of virtual wheel joints in the URDF description
