@@ -16,7 +16,6 @@
 		<remap from="arm_controller/command" to="gazebo_arm_controller/command"/>
 		<remap from="gripper_controller/command" to="gazebo_gripper_controller/command"/>
 		<remap from="base_controller/command" to="cmd_vel"/>
-		<remap from="scan_front" to="base_scan"/>
 		<remap from="/base_odometry/odom" to="/odom" />
 	</node>
 
